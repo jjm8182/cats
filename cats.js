@@ -228,6 +228,13 @@ function cat_card(catData) {
 }
 
 function cat_info(cat) {
+    let love_cat = '';
+    if (cat.favorite == true) {
+        love_cat = 'Котика все любят!'
+    } else {
+        love_cat = 'Котика никто не любит! :С'
+    }
+
     return `
     <div class='info_about_cat_container'>
     <img class= 'img_modal' src="${cat.image}">
@@ -276,12 +283,6 @@ let render = () => {
         btn_info.onclick = function () {
             modal.style.display = "block";
             let info_about = modal.querySelector('.info_about_cat')
-            let love_cat = '';
-            if (cat.favorite == true) {
-                love_cat = 'Котика все любят!'
-            } else {
-                love_cat = 'Котика никто не любит! :С'
-            }
 
             info_about.innerHTML = cat_info(cat)
 
