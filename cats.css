@@ -1,0 +1,251 @@
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+    color: cadetblue;
+    text-shadow: 1px 1px 1px black;
+    font-family: sans-serif;
+}
+
+.fa-cat {
+    margin: 10px;
+}
+
+.fa-heart {
+    color: red;
+    text-shadow: 1px 1px 1px black;
+    font-size: 25px;
+    transform: rotate(35deg);
+    position: absolute;
+    right: 0px;
+    top: 0px
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    justify-items: center;
+
+
+
+}
+
+.container {
+    width: 240px;
+    border: 1px solid rgb(193, 191, 191);
+    box-shadow: 3px 3px 3px black;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+}
+
+.container img {
+    height: 150px;
+
+}
+
+.buttons {
+    display: flex;
+}
+
+.more_info {
+    border: 1px solid white;
+    background-color: #fe6637;
+    color: white;
+    font-weight: 300;
+    font-family: sans-serif;
+    padding: 6px;
+    margin: 5px;
+
+}
+
+.more_info:hover {
+    background-color: #f44915
+}
+
+.more_info:active {
+    background-color: rgb(235, 47, 60)
+}
+
+
+.delete {
+    border: 1px solid white;
+    background-color: #87cff4;
+    color: white;
+    font-family: sans-serif;
+    padding: 10px;
+    margin: 5px;
+}
+
+.delete:hover {
+    background-color: #158cf4
+}
+
+.delete:active {
+    background-color: rgb(123, 0, 255)
+}
+
+.edit {
+    border: 1px solid white;
+    background-color: #81ef77;
+    color: white;
+    font-family: sans-serif;
+    padding: 10px;
+    margin: 5px;
+}
+
+.edit:hover {
+    background-color: #24f415
+}
+
+.edit:active {
+    background-color: rgb(5, 101, 18)
+}
+
+.shine-button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #fe6637;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fe6637;
+    transition: .2s ease-in-out;
+}
+
+.shine-button:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .5));
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -8px;
+    left: -75px;
+    transform: skewX(-45deg);
+}
+
+.shine-button:hover {
+    background: #fe6637;
+    color: #fff;
+}
+
+.shine-button:hover:before {
+    left: 150px;
+    transition: .5s ease-in-out;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 650px;
+
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_form {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    overflow: hidden;
+
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form_container {
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    box-shadow: 1px 1px 1px black;
+    background-color: rgb(248, 236, 223);
+}
+
+.form_container input {
+    margin: 15px;
+    padding: 10px;
+    width: 200px;
+}
+
+#checkbox_for_label {
+    margin: 3px;
+    width: 14px;
+}
+
+.checkbox {
+    margin: 5px;
+
+
+}
+
+.info_about_cat_container {
+    display: flex;
+}
+
+.info_about_cat_window {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    padding: 15px;
+
+}
+
+.info_about_cat_window p {
+    margin: 5px;
+}
+
+.img_modal {
+    width: 400px;
+}

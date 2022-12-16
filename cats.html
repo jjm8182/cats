@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Котики</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="cats.css" rel="stylesheet" type="text/css">
+</head>
+
+<header>
+    <div id="logo">
+        <i class="fa fa-duotone fa-cat"></i>
+        <b> Хвосты и лапки</b>
+    </div>
+    <button class='shine-button' id="add">Добавить котика</button>
+
+</header>
+
+<body>
+    <div class="cards"></div>
+
+
+    <div id="myModal" class="modal">
+
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="info_about_cat"></div>
+        </div>
+
+    </div>
+
+    <div class="modal_form">
+        <div class="form_container">
+            <h3>Добавить котку</h3>
+            <input type="text" name="name" placeholder="Имя котки">
+            <input type="text" name="description" placeholder="Описание котки">
+            <input type="number" name="age" min='0' max='50' placeholder="Возраст котки">
+            <input type="text" name="image" placeholder="URL фотокарточки котки">
+            <input type="number" name="rate" max="100" min="0" placeholder="Рейтинг котки">
+
+            <div class="checkbox">
+                <input type="checkbox" name="favorite" id="checkbox_for_label">
+                <label for="checkbox_for_label">В избранное</label>
+
+            </div>
+
+            <button class="shine-button form_btn_add">Добавить</button>
+            <button class="shine-button form_btn_edit">Сохранить</button>
+        </div>
+    </div>
+
+    <script src="cats.js"></script>
+</body>
+
+</html>
