@@ -12,6 +12,8 @@ let age_input = form.querySelector('input[name="age"]')
 let rate_input = form.querySelector('input[name="rate"]')
 let image_input = form.querySelector('input[name="image"]')
 
+const api_url = 'https://cats.petiteweb.dev/api/single/akuleshova/'
+
 // ------------------ ЛОГИКА ------------------
 let state = {
     num: 1,
@@ -23,25 +25,33 @@ let state = {
 
 
 let getCats = async () => {
-    let url = 'https://cats.petiteweb.dev/api/single/akuleshova/show';
     state.load = true;
     render();
 
-    state.list = await (await fetch(url)).json();
-    state.load = false;
-    render();
+    try {
+
+
+
+        state.list = await (await fetch(api_url + 'show')).json();
+        state.load = false;
+        render();
+
+    } catch (error) {
+        alert(error.message);
+        return;
+    }
 
 }
 
 let addCat = async () => {
 
 
-    let cats_list = await (await fetch('https://cats.petiteweb.dev/api/single/akuleshova/show')).json();
+    let cats_list = await (await fetch(api_url + 'show')).json();
     let id_list = [];
     for (let cat of cats_list) {
         let id = cat.id;
         id_list.push(id)
-        console.log(id_list)
+
     }
 
     let biggestID = Math.max.apply(null, id_list);
@@ -56,18 +66,26 @@ let addCat = async () => {
         image: image_input.value
     }
 
-    console.log(obj)
 
 
-    await fetch('https://cats.petiteweb.dev/api/single/akuleshova/add', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(obj)
+    try {
 
-    })
+
+
+        await fetch(api_url + 'add', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+
+        })
+
+    } catch (error) {
+        alert(error.message);
+        return;
+    }
 
 
     await getCats();
@@ -87,17 +105,24 @@ let addCat = async () => {
 
 
 let delCats = async (cat) => {
-    console.log(cat)
-
-    await fetch(`https://cats.petiteweb.dev/api/single/akuleshova/delete/${cat.id}`, {
-        method: 'DELETE',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
 
 
-    })
+    try {
+
+
+        await fetch(api_url + `delete/${cat.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+
+        })
+    } catch (error) {
+        alert(error.message);
+        return;
+    }
 
     getCats()
 
@@ -105,7 +130,7 @@ let delCats = async (cat) => {
 
 
 let editCat = async (cat) => {
-    console.log(cat)
+
 
     let obj = {
         name: name_input.value,
@@ -116,17 +141,24 @@ let editCat = async (cat) => {
         image: image_input.value
     }
 
-    await fetch(`https://cats.petiteweb.dev/api/single/akuleshova/update/${cat.id}`, {
-        method: 'PUT',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(obj)
+    try {
 
 
-    })
+        await fetch(api_url + `update/${cat.id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
 
+
+        })
+
+    } catch (error) {
+        alert(error.message);
+        return;
+    }
     await getCats()
 
     document.querySelector('.modal_form').style.display = 'none';
@@ -152,7 +184,7 @@ function saveFormData() {
 
 function getFormData() {
     let new_obj = JSON.parse(localStorage.formData);
-    console.log(new_obj)
+
 
     name_input.value = new_obj.name;
     favorite_input.checked = new_obj.favorite;
@@ -232,7 +264,7 @@ function cat_info(cat) {
     if (cat.favorite == true) {
         love_cat = 'Котика все любят!'
     } else {
-        love_cat = 'Котика никто не любит! :С'
+        love_cat = 'Котика никто не любит! :('
     }
 
     return `
